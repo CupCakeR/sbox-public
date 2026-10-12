@@ -84,7 +84,7 @@ internal class NativeAsset : Asset
 	public override string GetCompiledFile( bool absolute = false )
 	{
 		if ( absolute )
-			return native.GetAbsolutePath_Transient( AssetLocation_t.Game ).NormalizeFilename( false );
+			return Sandbox.CaseInsensitivePhysicalFileSystem.ResolveNativeCasing( native.GetAbsolutePath_Transient( AssetLocation_t.Game ).NormalizeFilename( false, false ) );
 
 		return native.GetRelativePath_Transient( AssetLocation_t.Game ).NormalizeFilename( false );
 	}
@@ -97,7 +97,7 @@ internal class NativeAsset : Asset
 	public override string GetSourceFile( bool absolute = false )
 	{
 		if ( absolute )
-			return native.GetAbsolutePath_Transient( AssetLocation_t.Content ).NormalizeFilename( false );
+			return Sandbox.CaseInsensitivePhysicalFileSystem.ResolveNativeCasing( native.GetAbsolutePath_Transient( AssetLocation_t.Content ).NormalizeFilename( false, false ) );
 
 		return native.GetRelativePath_Transient( AssetLocation_t.Content ).NormalizeFilename( false );
 	}
